@@ -1,0 +1,6 @@
+{
+  "name": "EVE HEI Sovereign Brain & Streamlit Terminal HUD",
+  "description": "Unified 100% visual Streamlit HUD, RGLEX PowerShell terminal, GitHub HD sync, URL asset matrix, and EVE HEI neural voice co-host.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

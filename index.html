@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // HMR: Disabled. Ignore WebSocket errors as per environment constraints.
+      window.addEventListener('unhandledrejection', function (e) {
+        if (
+          e &&
+          e.reason &&
+          (typeof e.reason === 'string'
+            ? e.reason.includes('WebSocket') || e.reason.includes('@vite/client')
+            : e.reason.message?.includes('WebSocket') ||
+              e.reason.message?.includes('vite') ||
+              e.reason.stack?.includes('@vite/client'))
+        ) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
+      window.addEventListener('error', function (e) {
+        if (
+          e &&
+          (e.message?.includes('WebSocket') ||
+            e.filename?.includes('@vite/client'))
+        ) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EVE HEI Sovereign Brain & Streamlit Terminal HUD</title>
+    <meta name="description" content="Unified 100% visual Streamlit HUD, RGLEX PowerShell terminal, GitHub HD sync, URL asset matrix, and EVE HEI neural voice co-host." />
+    <meta property="og:title" content="EVE HEI Sovereign Brain & Streamlit Terminal HUD" />
+    <meta property="og:description" content="Unified 100% visual Streamlit HUD, RGLEX PowerShell terminal, GitHub HD sync, URL asset matrix, and EVE HEI neural voice co-host." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#05070f] text-slate-100 antialiased selection:bg-cyan-500 selection:text-black">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
