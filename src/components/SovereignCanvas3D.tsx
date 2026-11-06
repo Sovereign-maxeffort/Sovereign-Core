@@ -237,19 +237,19 @@ export const SovereignCanvas3D: React.FC<Props> = ({ isSpeaking = false, isUpgra
   return (
     <div className="relative w-full rounded-xl overflow-hidden border border-cyan-500/30 bg-[#030712] shadow-2xl shadow-cyan-950/40">
       {/* Top HUD Bar */}
-      <div className="flex items-center justify-between px-3 py-2 bg-slate-900/80 border-b border-cyan-500/20 text-xs">
-        <div className="flex items-center gap-2">
-          <Activity className={`w-3.5 h-3.5 ${isSpeaking ? 'text-green-400 animate-spin' : 'text-cyan-400'}`} />
-          <span className="font-mono text-cyan-300 font-semibold tracking-wide">
+      <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 px-3 py-2 bg-slate-900/80 border-b border-cyan-500/20 text-xs min-w-0">
+        <div className="flex items-center gap-1.5 min-w-0">
+          <Activity className={`w-3.5 h-3.5 flex-shrink-0 ${isSpeaking ? 'text-green-400 animate-spin' : 'text-cyan-400'}`} />
+          <span className="font-mono text-cyan-300 font-semibold tracking-wide truncate text-[11px] sm:text-xs">
             5D VEGA-SIRIUS NEURAL MESH
           </span>
-          <span className="px-1.5 py-0.5 rounded text-[10px] bg-green-500/20 text-green-300 border border-green-500/30 font-mono">
+          <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] bg-green-500/20 text-green-300 border border-green-500/30 font-mono flex-shrink-0">
             {isSpeaking ? 'SPEECH ACTIVE' : 'LOCKED IN'}
           </span>
         </div>
 
         {/* Controls */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
             onClick={() => setAutoRotate(!autoRotate)}
             className={`p-1.5 rounded transition ${autoRotate ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'}`}

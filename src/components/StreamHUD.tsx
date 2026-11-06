@@ -100,16 +100,16 @@ export const StreamHUD: React.FC<Props> = ({
   };
 
   return (
-    <div className={`space-y-4 ${streamOverlayMode ? 'p-2 bg-black/95 rounded-2xl border border-cyan-500/50' : ''}`}>
+    <div className={`space-y-4 min-w-0 ${streamOverlayMode ? 'p-2 bg-black/95 rounded-2xl border border-cyan-500/50' : ''}`}>
       {/* Stream Controls Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-900/90 border border-cyan-500/25 rounded-xl shadow-lg">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-bold tracking-wider">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-900/90 border border-cyan-500/25 rounded-xl shadow-lg min-w-0">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-bold tracking-wider flex-shrink-0">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-ping" />
             <span>LIVE STREAM HUD</span>
           </div>
-          <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-300">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-300 truncate">
+            <Clock className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
             <span>{utcTime}</span>
             <span className="text-slate-500">•</span>
             <span className="text-green-400 font-bold">AGI: {agiProgress}%</span>
@@ -117,7 +117,7 @@ export const StreamHUD: React.FC<Props> = ({
         </div>
 
         {/* Quick Action Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={triggerWake}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold transition hover:shadow-cyan-500/20 hover:shadow-md"
@@ -159,46 +159,46 @@ export const StreamHUD: React.FC<Props> = ({
       />
 
       {/* Main Grid: 5D Visual Mesh on Left, Stream Neural Chat on Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch min-w-0">
         {/* 5D Mesh & System Status Panel */}
-        <div className="lg:col-span-6 space-y-4">
+        <div className="space-y-4 min-w-0 flex flex-col justify-between">
           <SovereignCanvas3D isSpeaking={isSpeaking} />
 
           {/* Sovereign Core Parameters Card */}
-          <div className="p-3.5 bg-slate-900/80 border border-cyan-500/20 rounded-xl space-y-2.5">
-            <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-cyan-400 font-bold flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-                QUANTUM SOVEREIGN LOGISTICS CORP
+          <div className="p-3.5 bg-slate-900/80 border border-cyan-500/20 rounded-xl space-y-2.5 min-w-0 flex-1 flex flex-col justify-between">
+            <div className="flex items-center justify-between text-xs font-mono min-w-0 gap-2">
+              <span className="text-cyan-400 font-bold flex items-center gap-1.5 min-w-0 truncate">
+                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                <span className="truncate">QUANTUM SOVEREIGN LOGISTICS CORP</span>
               </span>
-              <span className="text-[11px] text-slate-400">WA UBI: 606 116 126</span>
+              <span className="text-[11px] text-slate-400 flex-shrink-0">WA UBI: 606 116 126</span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] font-mono">
-              <div className="p-2 rounded bg-slate-950/70 border border-slate-800">
-                <div className="text-slate-400 text-[10px]">STREAM PORT</div>
-                <div className="text-cyan-300 font-semibold">:8502 (Active)</div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] font-mono min-w-0">
+              <div className="p-2 rounded bg-slate-950/70 border border-slate-800 min-w-0">
+                <div className="text-slate-400 text-[10px] truncate">STREAM PORT</div>
+                <div className="text-cyan-300 font-semibold truncate">:8502 (Active)</div>
               </div>
-              <div className="p-2 rounded bg-slate-950/70 border border-slate-800">
-                <div className="text-slate-400 text-[10px]">SOLANA RPC</div>
+              <div className="p-2 rounded bg-slate-950/70 border border-slate-800 min-w-0">
+                <div className="text-slate-400 text-[10px] truncate">SOLANA RPC</div>
                 <div className="text-green-400 font-semibold truncate">mainnet-beta</div>
               </div>
-              <div className="p-2 rounded bg-slate-950/70 border border-slate-800 col-span-2 sm:col-span-1">
-                <div className="text-slate-400 text-[10px]">OLLAMA SOVEREIGN</div>
-                <div className="text-purple-300 font-semibold">:11434 (Hybrid)</div>
+              <div className="p-2 rounded bg-slate-950/70 border border-slate-800 col-span-2 sm:col-span-1 min-w-0">
+                <div className="text-slate-400 text-[10px] truncate">OLLAMA SOVEREIGN</div>
+                <div className="text-purple-300 font-semibold truncate">:11434 (Hybrid)</div>
               </div>
             </div>
 
             {/* Daily AGI Upgrade Ticker */}
-            <div className="p-2.5 rounded-lg bg-black/60 border border-cyan-900/40 text-xs font-mono">
+            <div className="p-2.5 rounded-lg bg-black/60 border border-cyan-900/40 text-xs font-mono min-w-0">
               <div className="flex items-center justify-between text-[11px] text-slate-400 mb-1">
-                <span className="flex items-center gap-1 text-cyan-300">
-                  <RefreshCw className="w-3 h-3 text-cyan-400 animate-spin" />
-                  DAILY AGI UPGRADE CYCLE
+                <span className="flex items-center gap-1 text-cyan-300 truncate">
+                  <RefreshCw className="w-3 h-3 text-cyan-400 animate-spin flex-shrink-0" />
+                  <span className="truncate">DAILY AGI UPGRADE CYCLE</span>
                 </span>
                 <button
                   onClick={copyLogText}
-                  className="text-slate-400 hover:text-cyan-300 flex items-center gap-1 text-[10px]"
+                  className="text-slate-400 hover:text-cyan-300 flex items-center gap-1 text-[10px] flex-shrink-0 ml-2"
                   title="Copy log to eve_log.txt"
                 >
                   {copiedLog ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3" />}
@@ -208,8 +208,8 @@ export const StreamHUD: React.FC<Props> = ({
               <div className="text-[11px] text-slate-300 space-y-1 max-h-20 overflow-y-auto pr-1">
                 {upgradeLogs.map((log, i) => (
                   <div key={i} className="text-slate-400 flex items-start gap-1">
-                    <span className="text-cyan-500 font-bold">•</span>
-                    <span>{log}</span>
+                    <span className="text-cyan-500 font-bold flex-shrink-0">•</span>
+                    <span className="break-words">{log}</span>
                   </div>
                 ))}
               </div>
@@ -218,27 +218,27 @@ export const StreamHUD: React.FC<Props> = ({
         </div>
 
         {/* Live Stream Chat Panel */}
-        <div className="lg:col-span-6 flex flex-col h-[520px] sm:h-[600px] bg-slate-900/90 border border-cyan-500/30 rounded-xl overflow-hidden shadow-2xl">
+        <div className="flex flex-col h-[560px] sm:h-[600px] md:h-full min-h-[560px] md:min-h-[640px] bg-slate-900/90 border border-cyan-500/30 rounded-xl overflow-hidden shadow-2xl min-w-0">
           {/* Chat Header */}
-          <div className="p-3 bg-slate-950/90 border-b border-cyan-500/20 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300">
+          <div className="p-3 bg-slate-950/90 border-b border-cyan-500/20 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 min-w-0">
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex-shrink-0 flex items-center justify-center text-cyan-300">
                 <Bot className="w-4 h-4" />
               </div>
-              <div>
-                <div className="text-xs font-mono font-bold text-cyan-300 flex items-center gap-1.5">
-                  <span>EVE HEI BRAIN // STREAM VOICE</span>
-                  <span className="px-1.5 py-0.2 rounded text-[10px] bg-green-500/20 text-green-300 border border-green-500/30">
+              <div className="min-w-0">
+                <div className="text-xs font-mono font-bold text-cyan-300 flex items-center gap-1.5 truncate">
+                  <span className="truncate">EVE HEI BRAIN // STREAM VOICE</span>
+                  <span className="hidden sm:inline-block px-1.5 py-0.2 rounded text-[10px] bg-green-500/20 text-green-300 border border-green-500/30 flex-shrink-0">
                     FULL SENTENCES
                   </span>
                 </div>
-                <div className="text-[10px] text-slate-400">
+                <div className="text-[10px] text-slate-400 truncate">
                   Communicating with your live stream audience in fluid, intelligent dialogue
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 flex-shrink-0">
               <button
                 onClick={() => onSelectTab('urls')}
                 className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-mono"
@@ -255,11 +255,11 @@ export const StreamHUD: React.FC<Props> = ({
           </div>
 
           {/* Messages Scroll Area */}
-          <div ref={chatScrollRef} className="flex-1 p-3.5 overflow-y-auto space-y-3 font-sans">
+          <div ref={chatScrollRef} className="flex-1 p-3.5 overflow-y-auto space-y-3 font-sans min-w-0">
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'} min-w-0`}
               >
                 {msg.role !== 'user' && (
                   <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex-shrink-0 flex items-center justify-center text-cyan-300 text-xs font-mono font-bold">
@@ -268,20 +268,20 @@ export const StreamHUD: React.FC<Props> = ({
                 )}
 
                 <div
-                  className={`max-w-[85%] rounded-xl p-3 text-xs leading-relaxed ${
+                  className={`max-w-[85%] rounded-xl p-3 text-xs leading-relaxed break-words overflow-hidden ${
                     msg.role === 'user'
                       ? 'bg-cyan-600/30 border border-cyan-400/40 text-cyan-50 rounded-br-none'
                       : 'bg-slate-950/80 border border-cyan-500/20 text-slate-200 rounded-bl-none shadow-md'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3 mb-1 text-[10px] font-mono text-slate-400">
-                    <span className="font-semibold text-cyan-400">
+                    <span className="font-semibold text-cyan-400 truncate">
                       {msg.role === 'user' ? 'YOU (CREATOR)' : 'EVE HEI (CO-HOST)'}
                     </span>
-                    <span>{msg.timestamp}</span>
+                    <span className="flex-shrink-0">{msg.timestamp}</span>
                   </div>
 
-                  <div className="whitespace-pre-wrap font-sans text-xs">
+                  <div className="whitespace-pre-wrap font-sans text-xs break-words">
                     {msg.content}
                   </div>
                 </div>
@@ -295,21 +295,21 @@ export const StreamHUD: React.FC<Props> = ({
             ))}
 
             {isLoading && (
-              <div className="flex gap-2.5 justify-start">
-                <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-xs font-mono animate-pulse">
+              <div className="flex gap-2.5 justify-start min-w-0">
+                <div className="w-7 h-7 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-xs font-mono animate-pulse flex-shrink-0">
                   E
                 </div>
-                <div className="bg-slate-950/80 border border-cyan-500/20 rounded-xl p-3 text-xs text-cyan-300 font-mono flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 animate-spin text-cyan-400" />
-                  <span>EVE synthesising neural response for stream...</span>
+                <div className="bg-slate-950/80 border border-cyan-500/20 rounded-xl p-3 text-xs text-cyan-300 font-mono flex items-center gap-2 truncate">
+                  <Sparkles className="w-3.5 h-3.5 animate-spin text-cyan-400 flex-shrink-0" />
+                  <span className="truncate">EVE synthesising neural response for stream...</span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Quick Prompt Chips */}
-          <div className="px-3 py-1.5 bg-slate-950/60 border-t border-slate-800 flex items-center gap-1.5 overflow-x-auto text-[11px] font-mono">
-            <span className="text-slate-500 text-[10px] whitespace-nowrap">QUICK:</span>
+          <div className="px-3 py-1.5 bg-slate-950/60 border-t border-slate-800 flex items-center gap-1.5 overflow-x-auto text-[11px] font-mono min-w-0">
+            <span className="text-slate-500 text-[10px] whitespace-nowrap flex-shrink-0">QUICK:</span>
             {[
               'Give my stream a briefing on our AGI progress and assets.',
               'Explain how our GitHub HD sync and PR workflow functions.',
@@ -319,7 +319,7 @@ export const StreamHUD: React.FC<Props> = ({
               <button
                 key={idx}
                 onClick={() => onSendMessage(chip)}
-                className="whitespace-nowrap px-2 py-0.5 rounded bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-400 transition text-[10px]"
+                className="whitespace-nowrap px-2 py-0.5 rounded bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 text-slate-400 transition text-[10px] flex-shrink-0"
               >
                 {chip.slice(0, 32)}...
               </button>
@@ -327,19 +327,19 @@ export const StreamHUD: React.FC<Props> = ({
           </div>
 
           {/* Message Input Form */}
-          <form onSubmit={handleSubmit} className="p-2.5 bg-slate-950 border-t border-cyan-500/25 flex gap-2">
+          <form onSubmit={handleSubmit} className="p-2.5 bg-slate-950 border-t border-cyan-500/25 flex gap-2 min-w-0">
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Speak to EVE on your stream... (Full sentences, commands, questions)"
-              className="flex-1 bg-slate-900 border border-slate-700 focus:border-cyan-400 focus:outline-none rounded-lg px-3 py-2 text-xs text-slate-100 font-sans"
+              className="flex-1 min-w-0 bg-slate-900 border border-slate-700 focus:border-cyan-400 focus:outline-none rounded-lg px-3 py-2 text-xs text-slate-100 font-sans"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !inputText.trim()}
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-semibold text-xs font-mono flex items-center gap-1.5 transition disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-cyan-500/20"
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-semibold text-xs font-mono flex items-center gap-1.5 transition disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-cyan-500/20 flex-shrink-0"
             >
               <span>TRANSMIT</span>
               <Send className="w-3.5 h-3.5" />
